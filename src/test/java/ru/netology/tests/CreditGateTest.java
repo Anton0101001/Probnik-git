@@ -42,13 +42,14 @@ public class CreditGateTest {
         payment.waitNotificationApproved();
         assertEquals("APPROVED", SqlHelper.getCreditRequestStatus());
     }
+
     @Test
     void creditPositiveAllFieldValidDeclined() {
         val startPage = new PaymentMethod();
         val payment = startPage.goToCreditPage();
         payment.inputData(DataHelper.getDeclinedCard());
         payment.waitNotificationFailure();
-        Assertions.assertEquals("DECLINED", SqlHelper.getCreditRequestStatus());
+        assertEquals("DECLINED", SqlHelper.getCreditRequestStatus());
     }
 
     @Test
@@ -57,8 +58,9 @@ public class CreditGateTest {
         val payment = startPage.goToCreditPage();
         payment.inputData(DataHelper.getEmptyCard());
         payment.waitNotificationWrongFormat4Fields();
-        Assertions.assertEquals("0", SqlHelper.getOrderCount());
+        assertEquals("0", SqlHelper.getOrderCount());
     }
+
 
     @Test
     void creditNegativeNumberCard15Symbols() {
@@ -66,7 +68,7 @@ public class CreditGateTest {
         val payment = startPage.goToCreditPage();
         payment.inputData(DataHelper.getNumberCard15Symbols());
         payment.waitNotificationWrongFormat();
-        Assertions.assertEquals("0", SqlHelper.getOrderCount());
+        assertEquals("0", SqlHelper.getOrderCount());
     }
 
     @Test
@@ -75,7 +77,7 @@ public class CreditGateTest {
         val payment = startPage.goToCreditPage();
         payment.inputData(DataHelper.getCardNotInDatabase());
         payment.waitNotificationFailure();
-        Assertions.assertEquals("0", SqlHelper.getOrderCount());
+        assertEquals("0", SqlHelper.getOrderCount());
     }
 
     @Test
@@ -84,7 +86,7 @@ public class CreditGateTest {
         val payment = startPage.goToCreditPage();
         payment.inputData(DataHelper.getCardMonth1Symbol());
         payment.waitNotificationWrongFormat();
-        Assertions.assertEquals("0", SqlHelper.getOrderCount());
+        assertEquals("0", SqlHelper.getOrderCount());
     }
 
     @Test
@@ -93,7 +95,7 @@ public class CreditGateTest {
         val payment = startPage.goToCreditPage();
         payment.inputData(DataHelper.getCardMonthOver12());
         payment.waitNotificationExpirationDateError();
-        Assertions.assertEquals("0", SqlHelper.getOrderCount());
+        assertEquals("0", SqlHelper.getOrderCount());
     }
 
     @Test
@@ -102,7 +104,7 @@ public class CreditGateTest {
         val payment = startPage.goToCreditPage();
         payment.inputData(DataHelper.getCardMonth00ThisYear());
         payment.waitNotificationExpirationDateError();
-        Assertions.assertEquals("0", SqlHelper.getOrderCount());
+        assertEquals("0", SqlHelper.getOrderCount());
     }
 
     @Test
@@ -111,7 +113,7 @@ public class CreditGateTest {
         val payment = startPage.goToCreditPage();
         payment.inputData(DataHelper.getCardMonth00OverThisYear());
         payment.waitNotificationExpirationDateError();
-        Assertions.assertEquals("0", SqlHelper.getOrderCount());
+        assertEquals("0", SqlHelper.getOrderCount());
     }
 
     @Test
@@ -120,7 +122,7 @@ public class CreditGateTest {
         val payment = startPage.goToCreditPage();
         payment.inputData(DataHelper.getCardYear00());
         payment.waitNotificationExpiredError();
-        Assertions.assertEquals("0", SqlHelper.getOrderCount());
+        assertEquals("0", SqlHelper.getOrderCount());
     }
 
     @Test
@@ -129,7 +131,7 @@ public class CreditGateTest {
         val payment = startPage.goToCreditPage();
         payment.inputData(DataHelper.getCardYear1Symbol());
         payment.waitNotificationWrongFormat();
-        Assertions.assertEquals("0", SqlHelper.getOrderCount());
+        assertEquals("0", SqlHelper.getOrderCount());
     }
 
     @Test
@@ -138,7 +140,7 @@ public class CreditGateTest {
         val payment = startPage.goToCreditPage();
         payment.inputData(DataHelper.getCardYearUnderThisYear());
         payment.waitNotificationExpiredError();
-        Assertions.assertEquals("0", SqlHelper.getOrderCount());
+        assertEquals("0", SqlHelper.getOrderCount());
     }
 
     @Test
@@ -147,7 +149,7 @@ public class CreditGateTest {
         val payment = startPage.goToCreditPage();
         payment.inputData(DataHelper.getCardYearOverThisYearOn6());
         payment.waitNotificationExpirationDateError();
-        Assertions.assertEquals("0", SqlHelper.getOrderCount());
+        assertEquals("0", SqlHelper.getOrderCount());
     }
 
     @Test
@@ -156,7 +158,7 @@ public class CreditGateTest {
         val payment = startPage.goToCreditPage();
         payment.inputData(DataHelper.getCardCvv1Symbol());
         payment.waitNotificationWrongFormat();
-        Assertions.assertEquals("0", SqlHelper.getOrderCount());
+        assertEquals("0", SqlHelper.getOrderCount());
     }
 
     @Test
@@ -165,7 +167,7 @@ public class CreditGateTest {
         val payment = startPage.goToCreditPage();
         payment.inputData(DataHelper.getCardCvv2Symbols());
         payment.waitNotificationWrongFormat();
-        Assertions.assertEquals("0", SqlHelper.getOrderCount());
+        assertEquals("0", SqlHelper.getOrderCount());
     }
 
     @Test
@@ -174,7 +176,7 @@ public class CreditGateTest {
         val payment = startPage.goToCreditPage();
         payment.inputData(DataHelper.getCardHolder1Word());
         payment.waitNotificationWrongFormat();
-        Assertions.assertEquals("0", SqlHelper.getOrderCount());
+        assertEquals("0", SqlHelper.getOrderCount());
     }
 
     @Test
@@ -183,7 +185,7 @@ public class CreditGateTest {
         val payment = startPage.goToCreditPage();
         payment.inputData(DataHelper.getCardHolderCirillic());
         payment.waitNotificationWrongFormat();
-        Assertions.assertEquals("0", SqlHelper.getOrderCount());
+        assertEquals("0", SqlHelper.getOrderCount());
     }
 
     @Test
@@ -192,7 +194,7 @@ public class CreditGateTest {
         val payment = startPage.goToCreditPage();
         payment.inputData(DataHelper.getCardHolderNumeric());
         payment.waitNotificationWrongFormat();
-        Assertions.assertEquals("0", SqlHelper.getOrderCount());
+        assertEquals("0", SqlHelper.getOrderCount());
     }
 
     @Test
@@ -201,6 +203,6 @@ public class CreditGateTest {
         val payment = startPage.goToCreditPage();
         payment.inputData(DataHelper.getCardSpecialSymbols());
         payment.waitNotificationWrongFormat();
-        Assertions.assertEquals("0", SqlHelper.getOrderCount());
+        assertEquals("0", SqlHelper.getOrderCount());
     }
 }

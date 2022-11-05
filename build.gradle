@@ -1,3 +1,4 @@
+
 plugins {
     id 'java'
     id 'io.qameta.allure' version '2.9.6'
@@ -39,7 +40,10 @@ dependencies {
 }
 
 test {
-    useTestNG()
+    useJUnitPlatform()
     systemProperty 'selenide.headless', System.getProperty('selenide.headless')
-    systemProperty 'dbUrl', System.getProperty('dbUrl')
+    systemProperty 'db.url', System.getProperty('db.url')
+    systemProperty 'db.user', System.getProperty('db.user', "app")
+    systemProperty 'db.password', System.getProperty('db.password', "pass")
+    systemProperty 'sut.url', System.getProperty('sut.url',"http://localhost:8080")
 }

@@ -1,12 +1,13 @@
 package ru.netology.pages;
 
+import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import org.checkerframework.checker.units.qual.C;
 import ru.netology.data.Card;
 
-import static com.codeborne.selenide.Condition.exactText;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
@@ -52,7 +53,7 @@ public class BuyGate {
     }
 
     public void waitNotificationWrongFormat() {
-        wrongFormatError.shouldBe(visible, Condition.text("Неверный формат"));
+        wrongFormatError.shouldBe(Condition.text("Неверный формат"));
     }
 
     public void waitNotificationExpirationDateError() {
@@ -64,7 +65,7 @@ public class BuyGate {
     }
 
     public void waitNotificationWrongFormat4Fields() {
-        wrongFormat4Error.should();
+        wrongFormat4Error.shouldBe();
         requiredFieldError.shouldBe(visible, Condition.text("Поле обязательно для заполнения"));
     }
 }
