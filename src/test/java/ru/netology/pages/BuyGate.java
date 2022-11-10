@@ -1,16 +1,14 @@
 package ru.netology.pages;
 
-import com.codeborne.selenide.CollectionCondition;
+
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import org.checkerframework.checker.units.qual.C;
 import ru.netology.data.Card;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Selenide.*;
 
 public class BuyGate {
     private final SelenideElement cardNumberField = $(byText("Номер карты")).parent().$("[class=\"input__control\"]");
@@ -43,8 +41,8 @@ public class BuyGate {
         continueButton.click();
     }
 
-    public void waitNotificationApproved() {
-        approvedOperation.shouldBe(visible, Condition.text("Операция одобрена Банком."));
+    public  void waitNotificationApproved() {
+        approvedOperation.shouldBe(visible);
         cancelField.click();
     }
 

@@ -43,12 +43,12 @@ public class CreditGate {
     }
 
     public void waitNotificationApproved() {
-        approvedOperation.shouldBe(visible, Condition.text("Операция одобрена Банком"));
+        approvedOperation.shouldBe(visible);
         cancelField.click();
     }
 
     public void waitNotificationFailure() {
-        failureOperation.shouldBe(visible, Condition.text("Ошибка! Банк отказал в проведении операции."));
+        failureOperation.should(visible, Condition.text("Ошибка! Банк отказал в проведении операции."));
     }
 
     public void waitNotificationWrongFormat() {
