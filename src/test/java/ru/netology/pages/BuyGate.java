@@ -16,7 +16,10 @@ public class BuyGate {
     private final SelenideElement yearField = $(byText("Год")).parent().$("[class=\"input__control\"]");
     private final SelenideElement cardHolderField = $(byText("Владелец")).parent().$("[class=\"input__control\"]");
     private final SelenideElement cvvField = $(byText("CVC/CVV")).parent().$("[class=\"input__control\"]");
+
+
     private final SelenideElement approvedOperation = $(byText("Операция одобрена Банком.")).parent().$("[class=\"notification__content\"]");
+
     private final SelenideElement failureOperation = $(byText("Ошибка! Банк отказал в проведении операции.")).parent().$("[class=\"notification__content\"]");
     private final SelenideElement wrongFormatError = $(byText("Неверный формат"));
     private final ElementsCollection wrongFormat4Error = $$(byText("Неверный формат"));
@@ -26,7 +29,6 @@ public class BuyGate {
 
     private final SelenideElement cancelField = $$("[class=\"icon-button__text\"]").first();
     private final SelenideElement continueButton = $$("button").find(exactText("Продолжить"));
-
     public BuyGate() {
         SelenideElement heading = $$("h3").find(exactText("Оплата по карте"));
         heading.shouldBe(visible);
@@ -42,7 +44,8 @@ public class BuyGate {
     }
 
     public  void waitNotificationApproved() {
-        approvedOperation.shouldBe(visible);
+        approvedOperation.should(hidden);
+        sleep(5000);
         cancelField.click();
     }
 
