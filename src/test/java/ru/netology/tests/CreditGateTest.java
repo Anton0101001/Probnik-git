@@ -9,7 +9,7 @@ import ru.netology.data.SqlHelper;
 import ru.netology.pages.PaymentMethod;
 
 import static com.codeborne.selenide.Selenide.open;
-import static org.testng.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CreditGateTest {
     public static String url = System.getProperty("sut.url");
